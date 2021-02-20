@@ -3,12 +3,6 @@ package com.mot.challenge2.ui_layer.pages;
 import com.mot.challenge2.enums.LaunchOption;
 import com.mot.challenge2.ui_layer.component.launch.CreateForm;
 import org.openqa.selenium.*;
-import org.openqa.selenium.support.ui.FluentWait;
-import org.openqa.selenium.support.ui.Wait;
-
-import java.time.Duration;
-import java.util.ArrayList;
-import java.util.List;
 
 public class BrandingPage extends LaunchPage implements CreateForm{
 

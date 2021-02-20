@@ -3,11 +3,9 @@ package com.mot.challenge2.ui_layer.pages;
 import com.mot.challenge2.data_model.RoomInfo;
 import com.mot.challenge2.helper.ResourceHelper;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import java.util.List;
-import java.util.function.Function;
 
 public class BookingPage extends LaunchPage {
     private By LEFT_MENU_OPTIONS = By.className("navbar-collapse");
