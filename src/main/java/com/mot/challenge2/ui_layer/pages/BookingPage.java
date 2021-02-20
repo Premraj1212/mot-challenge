@@ -16,12 +16,13 @@ public class BookingPage extends LaunchPage {
 
     public String getLeftMenuOptions(){
         waitForPageToLoad();
-        waitForElementToBeClickable(driver.findElement(LEFT_MENU_OPTIONS));
+        waitForElementToBeClickable(LEFT_MENU_OPTIONS);
         return findElement(LEFT_MENU_OPTIONS).getText();
     }
 
     public BookingPage createRoom(){
-        waitForElementToBeClickable(driver.findElement(LEFT_MENU_OPTIONS));
+        waitForPageToLoad();
+        waitForElementToBeClickable(LEFT_MENU_OPTIONS);
         findElement(ROOM_NUMBER).sendKeys(roomInfo.getRoomNumber());
         findElement(ROOM_PRICE).sendKeys(roomInfo.getRoomPrice());
         findElement(CREATE).click();

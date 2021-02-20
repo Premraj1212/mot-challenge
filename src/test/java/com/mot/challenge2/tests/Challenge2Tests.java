@@ -19,7 +19,7 @@ public class Challenge2Tests extends BaseTest {
     }
     //  Test two: Check to see if rooms are saved and displayed in the UI
     @Test
-    public void room(){
+    public void roomCreationTest(){
         bookingPlatformBzLayer.loginToPlatform();
         assertThat(bookingPlatformBzLayer.findCreatedRooms())
                         .isNotEqualTo(1);
@@ -27,14 +27,14 @@ public class Challenge2Tests extends BaseTest {
 
     //  Test three: Check to see the confirm message appears when branding is updated
     @Test
-    public void updateBranding() {
+    public void updateBrandingTest() {
         bookingPlatformBzLayer.toUpdateBranding();
         assertThat(bookingPlatformBzLayer.toCheckAlertIsPresent())
                 .isEqualTo(1);
     }
     //  Test four: Check to see if the contact form shows a success message
     @Test
-    public void ContectCheck(){
+    public void contactFormTest(){
         bookingPlatformBzLayer.toSendContactForm();
         assertThat(bookingPlatformBzLayer.isContactFormSent())
                 .isTrue();
@@ -42,7 +42,7 @@ public class Challenge2Tests extends BaseTest {
 
     //Test five: Check to see if unread messages are bolded
     @Test
-    public  void test(){
+    public  void messageEnquiryTest(){
         bookingPlatformBzLayer.toFindEnquiryList();
         assertThat(bookingPlatformBzLayer.toFetchListOfEnquiry())
                 .isGreaterThanOrEqualTo(1);

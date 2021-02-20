@@ -21,7 +21,7 @@ public class LaunchComponentFactory {
                 launchComponent = new EnquiryComponent();
                 break;
             default:
-                new RuntimeException("Not Implemented Yet");
+                new IllegalArgumentException("Not Supported Component");
         }
         return launchComponent;
     }

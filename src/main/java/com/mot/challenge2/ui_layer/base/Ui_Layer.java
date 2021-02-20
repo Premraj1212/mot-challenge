@@ -28,13 +28,13 @@ public abstract class Ui_Layer {
         wait.until(driver -> ((JavascriptExecutor) driver).executeScript("return document.readyState").equals("complete"));
     }
 
-    protected WebElement waitForElementToBePresent(WebElement webElement) {
-        return wait.until(ExpectedConditions.visibilityOf(webElement));
+    protected WebElement waitForElementToBePresent(By locator) {
+        return wait.until(ExpectedConditions.visibilityOf(driver.findElement(locator)));
     }
 
-    protected WebElement waitForElementToBeClickable(WebElement webElement) {
-        waitForElementToBePresent(webElement);
-        return wait.until(ExpectedConditions.elementToBeClickable(webElement));
+    protected WebElement waitForElementToBeClickable(By locator) {
+        waitForElementToBePresent(locator);
+        return wait.until(ExpectedConditions.elementToBeClickable(locator));
     }
     protected void sleep() {
         try {
