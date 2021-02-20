@@ -1,19 +1,22 @@
 package com.mot.challenge2.ui_layer.base;
 
 import com.mot.challenge2.helper.DriverHelper;
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.FluentWait;
+import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.time.Duration;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 public abstract class Ui_Layer {
     protected WebDriver driver = DriverHelper.getDriver();
     private final int maxWaitTime = 30;
     private final WebDriverWait wait = new WebDriverWait(driver, maxWaitTime);
+    private final FluentWait<WebDriver> fluentWaits = new FluentWait<>(driver);
 
     protected WebElement findElement(By locator) {
         wait.until(ExpectedConditions.presenceOfElementLocated(locator));
@@ -36,11 +39,17 @@ public abstract class Ui_Layer {
         waitForElementToBePresent(locator);
         return wait.until(ExpectedConditions.elementToBeClickable(locator));
     }
-    protected void sleep() {
-        try {
-            Thread.sleep(4000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+    List<Class<? extends Throwable>> exceptionsToIgnore = new ArrayList<Class<? extends Throwable>>() {
+        {
+            add(NoSuchElementException.class);
+            add(StaleElementReferenceException.class);
         }
-    }
+    };
+
+    protected Wait<WebDriver> fluentWait = fluentWaits
+            .withTimeout(Duration.ofSeconds(maxWaitTime))
+            .pollingEvery(Duration.ofSeconds(1))
+            .ignoreAll(exceptionsToIgnore)
+            .withMessage("The message you will see in if a TimeoutException is thrown");
+
 }

@@ -2,8 +2,12 @@ package com.mot.challenge2.ui_layer.pages;
 
 import com.mot.challenge2.data_model.RoomInfo;
 import com.mot.challenge2.helper.ResourceHelper;
-import com.mot.challenge2.ui_layer.base.Ui_Layer;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+
+import java.util.List;
+import java.util.function.Function;
 
 public class BookingPage extends LaunchPage {
     private By LEFT_MENU_OPTIONS = By.className("navbar-collapse");
@@ -30,7 +34,8 @@ public class BookingPage extends LaunchPage {
     }
 
     public int listedCreatedRooms(){
-        sleep();
-        return findElements(CREATED_ROOM_LIST).size();
+        return roomList.size();
     }
+
+    List<WebElement> roomList = fluentWait.until(driver -> driver.findElements(CREATED_ROOM_LIST));
 }
